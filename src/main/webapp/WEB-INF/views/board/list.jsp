@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-		 pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" pageEncoding="UTF-8" %>
 <%@page import="com.example.BoardDAO, com.example.BoardVO,java.util.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
@@ -28,41 +27,46 @@
 			color: white;
 		}
 	</style>
-	<script>
-		function delete_ok(id){
-			var a = confirm("정말로 삭제하겠습니까?");
-			if(a) location.href='deletepost.jsp?id=' + id;
-		}
-	</script>
 </head>
+<script>
+	function delete_ok(id){
+		var a = confirm("정말로 삭제하겠습니까?");
+		if(a) location.href='deleteok/' + id;
+	}
+</script>
 <body>
 <h1>자유게시판</h1>
-<%
-	BoardDAO boardDAO = new BoardDAO();
-	List<BoardVO> list = boardDAO.getBoardList();
-%>
 <table id="list" width="90%">
 	<tr>
 		<th>Id</th>
 		<th>Title</th>
 		<th>Writer</th>
-		<th>Content</th>
+		<th>Time</th>
+		<th>Tools</th>
+		<th>Ingredients</th>
+		<th>Recipe</th>
 		<th>Regdate</th>
+		<th>Likes</th>
 		<th>Edit</th>
 		<th>Delete</th>
 	</tr>
+
 	<c:forEach items="${list}" var="u">
 		<tr>
 			<td>${u.getSeq()}</td>
 			<td>${u.getTitle()}</td>
-			<td>${u.getWriter()}</td>
-			<td>${u.getContent()}</td>
+			<td>${u.getUserid()}</td>
+			<td>${u.getCookingTime()}</td>
+			<td>${u.getCookingTools()}</td>
+			<td>${u.getIngredients()}</td>
+			<td>${u.getRecipe()}</td>
 			<td>${u.getRegdate()}</td>
+			<td>${u.getLikes()}</td>
 			<td><a href="editform/${u.getSeq()}">Edit</a></td>
 			<td><a href="javascript:delete_ok('${u.getSeq()}')">Delete</a></td>
 		</tr>
 	</c:forEach>
 </table>
-<br/><button type="button" onclick="location.href='addpostform.jsp">새글쓰기</button>
+<br/><a href="add">Add New Post</a>
 </body>
 </html>

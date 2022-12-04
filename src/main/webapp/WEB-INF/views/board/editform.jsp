@@ -10,22 +10,17 @@
 </head>
 <body>
 
-<%
-	BoardDAO boardDAO = new BoardDAO();
-	String id=request.getParameter("id");
-	BoardVO u=boardDAO.getBoard(Integer.parseInt(id));
-
-%>
-
 <h1>Edit Form</h1>
-<form:form commandName="boardVO" action="../editpost" method="POST">
+<form:form modelAttribute="u" action="../editok" method="POST">
 	<form:hidden path="seq"/>
 	<table id="edit">
-		<tr><td>Category:</td><td><form:input path="category"/></td></tr>
 		<tr><td>Title:</td><td><form:input path="title"/></td></tr>
-		<tr><td>Writer:</td><td><form:input path="writer"/></td></tr>
-		<tr><td>Content:</td><td><form:textarea cols="50" rows="5" path="content"/></td></tr>
-		<tr><td colspan="2"><input type="submit" value="Edit Post"/>
+		<tr><td>Userid:</td><td><form:input path="userid"/></td></tr>
+		<tr><td>Tools:</td><td><form:input path="cookingTools"/></td></tr>
+		<tr><td>Time:</td><td><form:input path="cookingTime"/></td></tr>
+		<tr><td>Ingredients:</td><td><form:input path="ingredients"/></td></tr>
+		<tr><td>Recipe:</td><td><form:textarea cols="50" rows="5" path="recipe"/></td></tr>
+		<input type="submit" value="수정하기"/>
 		<input type="button" value="Cancel" onclick="history.back()"/></td></tr>
 	</table>
 </form:form>

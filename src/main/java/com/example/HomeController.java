@@ -13,13 +13,11 @@ public class HomeController {
     public String home(){
         System.out.println("home");
         return "index";
-
-        // /WEB-INF/views/index.jsp
     }
 
     @RequestMapping("classlist")
     public String boardList(){
         System.out.println("board/list");
-        return "board/posts";
+        return "board/list";
     }
 }
