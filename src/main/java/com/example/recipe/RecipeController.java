@@ -1,4 +1,4 @@
-package com.example;
+package com.example.recipe;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping(value = "/board")
-public class BoardController {
+public class RecipeController {
     @Autowired
-    BoardServiceImpl boardService;
+    RecipeService boardService;
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String boardlist(Model model){
@@ -25,7 +25,7 @@ public class BoardController {
     }
 
     @RequestMapping(value = "/addok", method = RequestMethod.POST)
-    public String addPostOK(BoardVO vo){
+    public String addPostOK(RecipeVO vo){
         int i = boardService.insertBoard(vo);
         if (i == 0 )
             System.out.println("데이터 추가 실패");
@@ -36,15 +36,15 @@ public class BoardController {
 
     @RequestMapping(value = "/editform/{id}", method = RequestMethod.GET)
     public String editPost(@PathVariable("id") int id, Model model){
-        BoardVO boardVO = boardService.getBoard(id);
-        model.addAttribute("u", boardVO);
+        RecipeVO recipeVO = boardService.getBoard(id);
+        model.addAttribute("u", recipeVO);
         return "board/editform";
 
 
     }
 
     @RequestMapping(value = "/editok", method = RequestMethod.POST)
-    public String editPostOK(BoardVO vo){
+    public String editPostOK(RecipeVO vo){
         int i = boardService.updateBoard(vo);
         if (i == 0 )
             System.out.println("데이터 수정 실패");
