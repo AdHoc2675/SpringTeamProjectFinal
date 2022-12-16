@@ -67,7 +67,7 @@
                     </button>
                 </div>
                 <div class="col-sm-4">
-                    <button class="w-50 btn text-white bg-purple btn-lg" type="submit">완료</button>
+                    <button class="w-50 btn text-white bg-purple btn-lg" type="submit">추가</button>
                 </div>
                 <div class="col-sm-4">
                     <button class="w-50 btn text-white bg-purple btn-lg" type="reset">초기화</button>
